@@ -56,6 +56,16 @@ streamlit run app.py --server.port 8501
 
 Then open `http://localhost:8501`.
 
+## Public Deployment
+
+For the fastest public deployment, use Streamlit Community Cloud:
+
+- Repository: `Shalinijha0701/CORTEX`
+- Branch: `main`
+- Main file path: `app.py`
+
+The repository also includes `render.yaml`, `Dockerfile`, `Procfile`, and `runtime.txt` for Render or Docker-based deployment.
+
 ## Deploy On Render Or Streamlit Community Cloud
 
 Use `app.py` as the entry point and install packages from `requirements.txt`. The app does not require a database for the MVP; uploaded CSV data is processed in-session.
