@@ -3,7 +3,7 @@ from __future__ import annotations
 import pandas as pd
 import streamlit as st
 
-from components import metric_card, page_header, status_chip
+from components import html_table, metric_card, page_header, status_chip
 from model import analyze_health_data
 from reporting import build_report_pdf
 
@@ -57,7 +57,7 @@ def render(context: dict[str, object]) -> None:
         metric_card("Avg Recovery", f"{avg_recovery:.0f}", "Across loaded users", "#4b41e1")
 
     st.subheader("Patient Queue")
-    st.dataframe(queue, width="stretch", hide_index=True)
+    st.markdown(html_table(queue), unsafe_allow_html=True)
 
     st.subheader("Selected Patient")
     latest = analysis["latest"]

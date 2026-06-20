@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import html
 from pathlib import Path
 from typing import Any
 
@@ -229,3 +230,19 @@ def load_training_metrics(root: Path) -> dict[str, Any] | None:
     if not path.exists():
         return None
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def html_table(df: pd.DataFrame) -> str:
+    headers = "".join(f"<th>{html.escape(str(col))}</th>" for col in df.columns)
+    rows = []
+    for _, row in df.iterrows():
+        cells = "".join(f"<td>{html.escape(str(value))}</td>" for value in row)
+        rows.append(f"<tr>{cells}</tr>")
+    return f"""
+    <div class="table-shell">
+        <table class="cortex-table">
+            <thead><tr>{headers}</tr></thead>
+            <tbody>{''.join(rows)}</tbody>
+        </table>
+    </div>
+    """
