@@ -1,0 +1,11 @@
+{
+  "mode": "scikit_learn_random_forest",
+  "train_rows": 1200,
+  "test_rows": 300,
+  "recovery_mae": 2.917,
+  "health_state_accuracy": 0.977,
+  "saved_artifacts": [
+    "model_artifacts/recovery_regressor.joblib",
+    "model_artifacts/health_state_classifier.joblib"
+  ]
+}
