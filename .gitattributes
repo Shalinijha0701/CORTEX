@@ -1,0 +1,15 @@
+*.py text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.toml text eol=lf
+*.csv text eol=lf
+Dockerfile text eol=lf
+Procfile text eol=lf
+runtime.txt text eol=lf
+
+*.pdf binary
+*.pptx binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.joblib binary
