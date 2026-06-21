@@ -1,19 +1,160 @@
-# CORTEX Personalized Health Intelligence - Source Code
+# CORTEX - Personalized Health Intelligence
 
-This folder contains the runnable MVP for the CORTEX prototype. The UI is a Streamlit implementation rebuilt around the Stitch prototype screens: dashboard, intelligence hub, upload validation, profile baseline, patient alerts, and clinician portal.
+CORTEX is a working health-intelligence MVP that converts wearable-style health data into personalized recovery, stress, sleep, anomaly, and clinician-review insights. The prototype is built with Streamlit and Python, and is designed around a modern clinical dashboard experience inspired by the provided Stitch prototype screens.
 
-## Quick Start
+## Working Links
 
-```powershell
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-streamlit run app.py
+- GitHub repository: [https://github.com/Shalinijha0701/CORTEX](https://github.com/Shalinijha0701/CORTEX)
+- Local app link after running the project: [http://localhost:8501](http://localhost:8501)
+- Streamlit Cloud deployment settings:
+  - Repository: `Shalinijha0701/CORTEX`
+  - Branch: `main`
+  - Main file path: `app.py`
+
+> Public live link note: Streamlit/Render deployment requires the project owner to authorize the GitHub repository from their own account. Once deployed, paste that public URL in this section.
+
+## Problem Statement
+
+Wearables collect useful signals such as heart rate, HRV, sleep, steps, SpO2, stress level, and body temperature. Most dashboards show these values as generic charts, but they do not deeply compare a user's current condition against the user's own normal baseline.
+
+CORTEX addresses this by building a personal baseline for each user and then generating understandable insights:
+
+- Is recovery strong or weak today?
+- Is stress increasing?
+- Is HRV below the user's normal range?
+- Is sleep quality affecting recovery?
+- Does the latest record need clinician review?
+
+## Solution Overview
+
+CORTEX lets a user upload a CSV file or use the built-in sample dataset. The system validates the data, cleans missing values, normalizes stress scale, builds a personal baseline, computes health intelligence scores, and presents the result in a multi-page dashboard.
+
+The MVP includes:
+
+- CSV upload and validation workflow
+- Personal baseline creation
+- Recovery score
+- Stress index and stress trend
+- Sleep quality classification
+- Anomaly alerts
+- Health state classification
+- Confidence score
+- Patient alert center
+- Clinician review portal
+- PDF health report export
+- Baseline CSV export
+- Enriched CSV export
+
+## Application Pages
+
+| Page | Purpose |
+| --- | --- |
+| Dashboard | Main patient dashboard with recovery gauge, HRV/stress/sleep/resting-HR cards, and trend charts |
+| Intelligence Hub | Anomaly alerts, recommendations, baseline comparison, model metrics, and report export |
+| Data Upload Validation | File intake, schema check, missing-value check, outlier detection, stress normalization, and baseline readiness |
+| Profile & Baseline | User-specific baseline statistics and latest-vs-baseline deltas |
+| Patient Alerts | Prototype patient-facing alert and notification workflow |
+| Clinician Portal | Multi-patient queue, critical recovery count, selected-patient summary, notes, and PDF export |
+
+## Architecture
+
+```mermaid
+flowchart LR
+    A["User / Clinician"] --> B["CSV Upload or Sample Dataset"]
+    B --> C["Validation Layer"]
+    C --> D["Data Cleaning"]
+    D --> E["Personal Baseline Engine"]
+    E --> F["CORTEX Health Intelligence Engine"]
+    F --> G["Dashboard"]
+    F --> H["Intelligence Hub"]
+    F --> I["Patient Alerts"]
+    F --> J["Clinician Portal"]
+    H --> K["PDF / CSV Exports"]
+    J --> K
 ```
 
-The app automatically loads `sample_health_data.csv`. You can also upload another CSV with the same schema.
+## Data Flow
 
-## Required CSV Columns
+```mermaid
+flowchart TD
+    A["Raw health CSV"] --> B["Normalize column names"]
+    B --> C["Validate required schema"]
+    C --> D["Parse dates"]
+    D --> E["Fill missing numeric values by user median"]
+    E --> F["Normalize stress_level to 0-100"]
+    F --> G["Clip unrealistic health ranges"]
+    G --> H["Sort records by user and date"]
+    H --> I["Use first 70-80% records as baseline"]
+    I --> J["Analyze latest records"]
+    J --> K["Recovery Score / Stress Index / Health State"]
+    K --> L["Dashboard, alerts, recommendations, reports"]
+```
+
+## Health Intelligence Logic
+
+### Personal Baseline
+
+For each selected user, CORTEX calculates baseline means and standard deviations for:
+
+- Heart rate
+- Resting heart rate
+- HRV
+- Sleep hours
+- Sleep score
+- Steps
+- Active minutes
+- Calories burned
+- SpO2
+- Respiratory rate
+- Stress level
+- Body temperature
+
+The app uses the user's earlier time-ordered records as the personal baseline and compares the latest records against that baseline.
+
+### Recovery Score
+
+The recovery score is a 0-100 score calculated from:
+
+- Sleep duration and sleep score
+- HRV compared with baseline
+- Activity balance compared with baseline
+- SpO2
+- Stress level
+- Resting heart rate penalty
+- Body temperature penalty
+
+### Stress Index
+
+The stress index is calculated from:
+
+- Reported stress level
+- Heart rate elevation
+- HRV drop
+- Sleep reduction
+
+The app also calculates a stress trend by comparing short-term and longer-term rolling averages.
+
+### Health State
+
+CORTEX classifies the latest user state into:
+
+- `Normal`
+- `Stressed`
+- `Fatigued`
+- `Recovery Needed`
+
+It also provides a confidence score so the prototype feels more like an intelligence system and less like a plain rule checker.
+
+## Dataset
+
+The included sample dataset is `sample_health_data.csv`.
+
+- Rows: 1,500
+- Users: 20
+- Days per user: 75
+- Target labels: `Normal`, `Stressed`, `Fatigued`, `Recovery Needed`
+
+Required CSV columns:
 
 ```text
 user_id,date,heart_rate,resting_heart_rate,hrv,sleep_hours,sleep_score,steps,active_minutes,calories_burned,spo2,respiratory_rate,stress_level,body_temperature
@@ -25,19 +166,70 @@ Optional target columns for training/evaluation:
 recovery_score,health_state
 ```
 
-## Files
+## Tech Stack
 
-- `app.py` - Streamlit dashboard and report interface.
-- `components.py` - Reusable Streamlit HTML/CSS cards, gauge, chips, charts, and validation components.
-- `styles.py` - CORTEX clinical UI theme.
-- `pages/` - Dashboard, intelligence hub, upload validation, profile baseline, patient alerts, and clinician portal screens.
-- `model.py` - CORTEX personalized baseline, scoring, anomaly, and recommendation engine.
-- `utils.py` - CSV validation, column normalization, data cleaning, and dataset summary helpers.
-- `reporting.py` - Downloadable PDF health report generation.
-- `generate_sample_data.py` - Rebuilds the included multi-user demonstration dataset.
-- `train_model.py` - Optional train/test script. Uses scikit-learn if installed and falls back to the deterministic CORTEX rule engine if not.
-- `run_smoke_tests.py` - Local logic test for data cleaning and health intelligence output.
-- `sample_health_data.csv` - Demo dataset for the prototype.
+- Python
+- Streamlit
+- Pandas
+- NumPy
+- Plotly
+- Scikit-learn
+- ReportLab
+
+## Folder Structure
+
+```text
+CORTEX/
+├── app.py
+├── components.py
+├── styles.py
+├── model.py
+├── utils.py
+├── reporting.py
+├── generate_sample_data.py
+├── train_model.py
+├── run_smoke_tests.py
+├── sample_health_data.csv
+├── requirements.txt
+├── pages/
+│   ├── dashboard.py
+│   ├── intelligence_hub.py
+│   ├── data_upload.py
+│   ├── profile_baseline.py
+│   ├── mobile_alerts.py
+│   └── clinician_portal.py
+├── model_artifacts/
+│   ├── health_state_classifier.joblib
+│   ├── recovery_regressor.joblib
+│   └── training_metrics.json
+├── documentation/
+│   ├── Technical_Documentation.md
+│   ├── Technical_Documentation.pdf
+│   └── Architecture_Diagram.png
+├── presentation/
+│   └── CORTEX_Personalized_Health_Intelligence.pptx
+├── supporting_materials/
+├── demo_video/
+├── Dockerfile
+├── Procfile
+├── render.yaml
+└── runtime.txt
+```
+
+## Run Locally
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+streamlit run app.py --server.port 8501
+```
+
+Open:
+
+```text
+http://localhost:8501
+```
 
 ## Test
 
@@ -46,26 +238,77 @@ python run_smoke_tests.py
 python train_model.py
 ```
 
-Generated metrics are written to `model_artifacts/training_metrics.json`.
+Current training output:
 
-## Deploy Locally
+- Recovery score MAE: about `2.917`
+- Health-state accuracy: about `0.977`
 
-```powershell
-streamlit run app.py --server.port 8501
+Metrics are saved in:
+
+```text
+model_artifacts/training_metrics.json
 ```
 
-Then open `http://localhost:8501`.
+## Deployment
 
-## Public Deployment
+### Streamlit Community Cloud
 
-For the fastest public deployment, use Streamlit Community Cloud:
+Use these settings:
 
-- Repository: `Shalinijha0701/CORTEX`
-- Branch: `main`
-- Main file path: `app.py`
+```text
+Repository: Shalinijha0701/CORTEX
+Branch: main
+Main file path: app.py
+```
 
-The repository also includes `render.yaml`, `Dockerfile`, `Procfile`, and `runtime.txt` for Render or Docker-based deployment.
+### Render
 
-## Deploy On Render Or Streamlit Community Cloud
+This repository includes `render.yaml`.
 
-Use `app.py` as the entry point and install packages from `requirements.txt`. The app does not require a database for the MVP; uploaded CSV data is processed in-session.
+Render settings:
+
+```text
+Build command: pip install -r requirements.txt
+Start command: streamlit run app.py --server.port $PORT --server.address 0.0.0.0
+```
+
+### Docker
+
+```powershell
+docker build -t cortex-health .
+docker run -p 8501:8501 cortex-health
+```
+
+## Prototype Demo Flow
+
+1. Open the dashboard.
+2. Select a user profile.
+3. Review recovery score, health state, confidence, HRV delta, stress, sleep, and resting HR.
+4. Open Data Upload Validation and show validation checks.
+5. Open Intelligence Hub and show anomaly alerts and recommendations.
+6. Download the PDF report.
+7. Open Profile & Baseline and explain personal baseline logic.
+8. Open Patient Alerts and Clinician Portal.
+9. Show the multi-patient clinician queue and selected-patient export.
+
+## Limitations
+
+- This is a wellness intelligence prototype, not a medical diagnosis tool.
+- The included dataset is synthetic/demo data.
+- No real wearable API integration is included yet.
+- No authentication or encrypted production database is included yet.
+- Clinician notes are stored only in the active Streamlit session.
+
+## Future Scope
+
+- Fitbit, Garmin, Apple Health, or Google Fit integration
+- Authentication and role-based patient/clinician access
+- Secure database storage
+- Mobile app notifications
+- Longer time-series model training
+- Doctor or coach dashboard
+- Privacy-preserving health analytics
+
+## Disclaimer
+
+CORTEX is intended only as a prototype for personalized wellness insights. It is not a medical device and should not be used as a replacement for professional medical advice, diagnosis, or treatment.
