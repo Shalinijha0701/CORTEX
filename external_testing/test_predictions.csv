@@ -1,0 +1,91 @@
+user_id,date,actual_recovery_score,actual_health_state,predicted_recovery_score,predicted_health_state
+TEST_U01,2025-06-01,70.2,Normal,79.7,Normal
+TEST_U01,2025-06-02,65.3,Normal,80.1,Normal
+TEST_U01,2025-06-03,68.8,Normal,80.5,Normal
+TEST_U01,2025-06-04,69.1,Normal,79.0,Normal
+TEST_U01,2025-06-05,71.5,Normal,80.2,Normal
+TEST_U01,2025-06-06,66.1,Normal,78.1,Normal
+TEST_U01,2025-06-07,67.7,Normal,78.4,Normal
+TEST_U01,2025-06-08,69.2,Normal,79.8,Normal
+TEST_U01,2025-06-09,57.7,Fatigued,73.2,Normal
+TEST_U01,2025-06-10,53.5,Fatigued,73.7,Normal
+TEST_U01,2025-06-11,52.7,Fatigued,75.3,Normal
+TEST_U01,2025-06-12,51.8,Fatigued,73.5,Normal
+TEST_U01,2025-06-13,69.0,Normal,79.0,Normal
+TEST_U01,2025-06-14,69.7,Normal,80.3,Normal
+TEST_U01,2025-06-15,71.0,Normal,79.4,Normal
+TEST_U01,2025-06-16,67.6,Normal,79.0,Normal
+TEST_U01,2025-06-17,70.8,Normal,79.8,Normal
+TEST_U01,2025-06-18,72.1,Normal,81.7,Normal
+TEST_U01,2025-06-19,50.8,Stressed,68.5,Normal
+TEST_U01,2025-06-20,49.7,Stressed,67.1,Normal
+TEST_U01,2025-06-21,48.9,Stressed,67.4,Normal
+TEST_U01,2025-06-22,51.5,Stressed,66.9,Normal
+TEST_U01,2025-06-23,49.8,Stressed,68.7,Normal
+TEST_U01,2025-06-24,50.1,Stressed,69.0,Normal
+TEST_U01,2025-06-25,38.9,Recovery Needed,61.4,Normal
+TEST_U01,2025-06-26,37.7,Recovery Needed,59.6,Normal
+TEST_U01,2025-06-27,37.2,Recovery Needed,58.7,Stressed
+TEST_U01,2025-06-28,56.1,Fatigued,73.4,Normal
+TEST_U01,2025-06-29,72.1,Normal,80.8,Normal
+TEST_U01,2025-06-30,69.1,Normal,80.4,Normal
+TEST_U02,2025-06-01,70.1,Normal,77.6,Normal
+TEST_U02,2025-06-02,72.0,Normal,77.6,Normal
+TEST_U02,2025-06-03,67.8,Normal,74.5,Normal
+TEST_U02,2025-06-04,73.8,Normal,78.6,Normal
+TEST_U02,2025-06-05,68.5,Normal,78.3,Normal
+TEST_U02,2025-06-06,47.2,Stressed,58.8,Recovery Needed
+TEST_U02,2025-06-07,48.3,Stressed,59.6,Stressed
+TEST_U02,2025-06-08,48.1,Stressed,60.3,Stressed
+TEST_U02,2025-06-09,48.5,Stressed,62.8,Stressed
+TEST_U02,2025-06-10,50.4,Stressed,64.5,Stressed
+TEST_U02,2025-06-11,45.8,Stressed,59.4,Stressed
+TEST_U02,2025-06-12,34.6,Recovery Needed,55.7,Stressed
+TEST_U02,2025-06-13,36.1,Recovery Needed,56.1,Recovery Needed
+TEST_U02,2025-06-14,35.1,Recovery Needed,56.6,Stressed
+TEST_U02,2025-06-15,33.3,Recovery Needed,56.8,Recovery Needed
+TEST_U02,2025-06-16,32.2,Recovery Needed,56.3,Recovery Needed
+TEST_U02,2025-06-17,49.5,Fatigued,69.0,Normal
+TEST_U02,2025-06-18,55.1,Fatigued,68.9,Normal
+TEST_U02,2025-06-19,52.8,Fatigued,65.0,Normal
+TEST_U02,2025-06-20,58.1,Fatigued,65.4,Fatigued
+TEST_U02,2025-06-21,56.6,Fatigued,66.8,Normal
+TEST_U02,2025-06-22,57.7,Fatigued,65.9,Normal
+TEST_U02,2025-06-23,70.3,Normal,77.3,Normal
+TEST_U02,2025-06-24,67.2,Normal,75.0,Normal
+TEST_U02,2025-06-25,68.5,Normal,75.2,Normal
+TEST_U02,2025-06-26,69.9,Normal,76.3,Normal
+TEST_U02,2025-06-27,70.3,Normal,77.0,Normal
+TEST_U02,2025-06-28,67.7,Normal,76.9,Normal
+TEST_U02,2025-06-29,67.5,Normal,76.5,Normal
+TEST_U02,2025-06-30,67.7,Normal,76.3,Normal
+TEST_U03,2025-06-01,57.6,Fatigued,59.5,Fatigued
+TEST_U03,2025-06-02,54.5,Fatigued,58.8,Fatigued
+TEST_U03,2025-06-03,54.4,Fatigued,60.7,Normal
+TEST_U03,2025-06-04,55.1,Fatigued,59.0,Fatigued
+TEST_U03,2025-06-05,57.4,Fatigued,61.7,Fatigued
+TEST_U03,2025-06-06,50.3,Fatigued,61.2,Fatigued
+TEST_U03,2025-06-07,70.6,Normal,73.5,Normal
+TEST_U03,2025-06-08,68.2,Normal,73.2,Normal
+TEST_U03,2025-06-09,70.7,Normal,70.4,Normal
+TEST_U03,2025-06-10,69.6,Normal,73.5,Normal
+TEST_U03,2025-06-11,72.7,Normal,73.7,Normal
+TEST_U03,2025-06-12,71.9,Normal,73.0,Normal
+TEST_U03,2025-06-13,45.7,Stressed,57.1,Recovery Needed
+TEST_U03,2025-06-14,47.0,Stressed,56.4,Recovery Needed
+TEST_U03,2025-06-15,49.2,Stressed,58.0,Stressed
+TEST_U03,2025-06-16,49.8,Stressed,56.5,Recovery Needed
+TEST_U03,2025-06-17,49.9,Stressed,56.5,Recovery Needed
+TEST_U03,2025-06-18,49.1,Stressed,57.3,Recovery Needed
+TEST_U03,2025-06-19,36.9,Recovery Needed,54.0,Recovery Needed
+TEST_U03,2025-06-20,35.5,Recovery Needed,55.7,Recovery Needed
+TEST_U03,2025-06-21,34.9,Recovery Needed,55.8,Recovery Needed
+TEST_U03,2025-06-22,35.6,Recovery Needed,55.7,Recovery Needed
+TEST_U03,2025-06-23,37.7,Recovery Needed,55.8,Recovery Needed
+TEST_U03,2025-06-24,37.4,Recovery Needed,54.6,Recovery Needed
+TEST_U03,2025-06-25,57.6,Fatigued,61.3,Normal
+TEST_U03,2025-06-26,57.1,Fatigued,62.2,Stressed
+TEST_U03,2025-06-27,51.4,Fatigued,62.1,Fatigued
+TEST_U03,2025-06-28,70.8,Normal,72.6,Normal
+TEST_U03,2025-06-29,67.7,Normal,74.2,Normal
+TEST_U03,2025-06-30,72.6,Normal,75.1,Normal

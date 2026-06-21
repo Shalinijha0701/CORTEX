@@ -1,0 +1,37 @@
+{
+  "rows": 90,
+  "users": [
+    "TEST_U01",
+    "TEST_U02",
+    "TEST_U03"
+  ],
+  "date_range": [
+    "2025-06-01",
+    "2025-06-30"
+  ],
+  "class_distribution": {
+    "Normal": 38,
+    "Fatigued": 20,
+    "Stressed": 18,
+    "Recovery Needed": 14
+  },
+  "columns": [
+    "user_id",
+    "date",
+    "heart_rate",
+    "resting_heart_rate",
+    "hrv",
+    "sleep_hours",
+    "sleep_score",
+    "steps",
+    "active_minutes",
+    "calories_burned",
+    "spo2",
+    "respiratory_rate",
+    "stress_level",
+    "body_temperature",
+    "recovery_score",
+    "health_state"
+  ],
+  "synthetic": true
+}

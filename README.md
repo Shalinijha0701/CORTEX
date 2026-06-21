@@ -167,6 +167,38 @@ Optional target columns for training/evaluation:
 recovery_score,health_state
 ```
 
+## External New-User Testing
+
+The final curated submission includes a second-type external test package generated separately from the internal sample dataset.
+
+External test summary:
+
+- Rows: 90
+- Users: 3 unseen users
+- User IDs: `TEST_U01`, `TEST_U02`, `TEST_U03`
+- Date range: 2025-06-01 to 2025-06-30
+- Health-state distribution:
+  - Normal: 38
+  - Fatigued: 20
+  - Stressed: 18
+  - Recovery Needed: 14
+
+External test files:
+
+- `external_test_features_only.csv`
+- `external_test_labels.csv`
+- `external_test_data.csv`
+- `test_predictions.csv`
+- `dataset_manifest.json`
+- `README_external_test.md`
+
+External test result using the saved demonstration model artifacts:
+
+- Recovery-score MAE: `11.462`
+- Health-state accuracy: `0.667`
+
+These metrics validate the prototype's external testing workflow on unseen synthetic users. They are not clinical accuracy claims.
+
 ## Tech Stack
 
 - Python
