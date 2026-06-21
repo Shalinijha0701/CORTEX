@@ -6,6 +6,7 @@ CORTEX is a working health-intelligence MVP that converts wearable-style health 
 
 - GitHub repository: [https://github.com/Shalinijha0701/CORTEX](https://github.com/Shalinijha0701/CORTEX)
 - Local app link after running the project: [http://localhost:8501](http://localhost:8501)
+- Prototype screen recording: [Google Drive demo video](https://drive.google.com/file/d/146NRshMjqcuD72kZ9YU8R04TQ-YnCXZQ/view?usp=sharing)
 - Streamlit Cloud deployment settings:
   - Repository: `Shalinijha0701/CORTEX`
   - Branch: `main`
