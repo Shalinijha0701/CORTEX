@@ -155,11 +155,12 @@ The included sample dataset is `sample_health_data.csv`.
 - Days per user: 75
 - Target labels: `Normal`, `Stressed`, `Fatigued`, `Recovery Needed`
 
-Required CSV columns:
+Required CSV column groups:
 
-```text
-user_id,date,heart_rate,resting_heart_rate,hrv,sleep_hours,sleep_score,steps,active_minutes,calories_burned,spo2,respiratory_rate,stress_level,body_temperature
-```
+- Identity: `user_id`, `date`
+- Vitals: `heart_rate`, `resting_heart_rate`, `hrv`, `spo2`, `respiratory_rate`, `body_temperature`
+- Sleep and stress: `sleep_hours`, `sleep_score`, `stress_level`
+- Activity: `steps`, `active_minutes`, `calories_burned`
 
 Optional target columns for training/evaluation:
 

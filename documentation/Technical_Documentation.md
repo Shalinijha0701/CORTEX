@@ -18,11 +18,15 @@ The MVP focuses on practical wellness intelligence:
 
 ## 3. Dataset
 
-The included demo dataset is `source_code/sample_health_data.csv`. It contains 1,500 wearable-health rows across 20 users, giving each user 75 days of history for baseline calibration and recent analysis. It uses these columns:
+The included demo dataset is `sample_health_data.csv`. It contains 1,500 wearable-health rows across 20 users, giving each user 75 days of history for baseline calibration and recent analysis.
 
-```text
-user_id,date,heart_rate,resting_heart_rate,hrv,sleep_hours,sleep_score,steps,active_minutes,calories_burned,spo2,respiratory_rate,stress_level,body_temperature,recovery_score,health_state
-```
+Required column groups:
+
+- Identity: `user_id`, `date`
+- Vitals: `heart_rate`, `resting_heart_rate`, `hrv`, `spo2`, `respiratory_rate`, `body_temperature`
+- Sleep and stress: `sleep_hours`, `sleep_score`, `stress_level`
+- Activity: `steps`, `active_minutes`, `calories_burned`
+- Optional evaluation targets: `recovery_score`, `health_state`
 
 Input features:
 
