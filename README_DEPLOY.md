@@ -1,5 +1,11 @@
 # CORTEX Deployment Notes
 
+## Live Deployment
+
+The deployed Streamlit app is available at:
+
+https://cortex-aguesfiutt8t9jx7jhbz9s.streamlit.app/
+
 ## Local Deployment
 
 ```powershell

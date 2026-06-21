@@ -5,14 +5,12 @@ CORTEX is a working health-intelligence MVP that converts wearable-style health 
 ## Working Links
 
 - GitHub repository: [https://github.com/Shalinijha0701/CORTEX](https://github.com/Shalinijha0701/CORTEX)
-- Local app link after running the project: [http://localhost:8501](http://localhost:8501)
+- Live deployed app: [https://cortex-aguesfiutt8t9jx7jhbz9s.streamlit.app/](https://cortex-aguesfiutt8t9jx7jhbz9s.streamlit.app/)
 - Prototype screen recording: [Google Drive demo video](https://drive.google.com/file/d/146NRshMjqcuD72kZ9YU8R04TQ-YnCXZQ/view?usp=sharing)
 - Streamlit Cloud deployment settings:
   - Repository: `Shalinijha0701/CORTEX`
   - Branch: `main`
   - Main file path: `app.py`
-
-> Public live link note: Streamlit/Render deployment requires the project owner to authorize the GitHub repository from their own account. Once deployed, paste that public URL in this section.
 
 ## Problem Statement
 
